@@ -22,6 +22,7 @@ defmodule RogerUI.Web.Helpers.Filter do
   defp check(map, field, filter), do: check(map, [field], filter)
 
   defp check(map, fields, filter) do
+  defp check(map, fields, filter) when is_list(fields) do
     fields
     |> Enum.any?(fn field ->
       map
@@ -31,4 +32,6 @@ defmodule RogerUI.Web.Helpers.Filter do
       |> String.contains?(filter)
     end)
   end
+
+  defp check(map, field, filter), do: check(map, [field], filter)
 end
